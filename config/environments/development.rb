@@ -1,17 +1,18 @@
 Rails.application.configure do
-    path = Rails.root.join("whitelist.yml")
-    default_whitelist_path = Rails.root.join("default_whitelist.yml")
-    whitelisted_ips = []
+  path = Rails.root.join("whitelist.yml")
+  default_whitelist_path = Rails.root.join("default_whitelist.yml")
+  whitelisted_ips = []
 
-    if File.exist?(path)
-      whitelisted_ips = YAML.load_file(path)
-    end
+  if File.exist?(path)
+    whitelisted_ips = YAML.load_file(path)
+  end
 
-    if File.exist?(default_whitelist_path)
-      whitelisted_ips = whitelisted_ips.concat(YAML.load_file(default_whitelist_path))
-    end
+  if File.exist?(default_whitelist_path)
+    whitelisted_ips = whitelisted_ips.concat(YAML.load_file(default_whitelist_path))
 
-    config.web_console.whitelisted_ips = whitelisted_ips
+  end
+
+  config.web_console.whitelisted_ips = whitelisted_ips
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
 

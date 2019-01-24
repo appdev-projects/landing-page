@@ -5,8 +5,7 @@ ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -49,23 +48,29 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'dotenv-rails'
+  gem 'draft_log', github: 'firstdraft/draft_log'
   gem 'grade_runner', github: 'firstdraft/grade_runner'
   gem 'pry-rails'
-  gem 'web_git', github: 'firstdraft/web_git'
+  gem 'sqlite3'
   gem 'awesome_print'
 end
 
 group :development do
   gem 'annotate'
-  gem 'draft_log', github: 'firstdraft/draft_log'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'dev_toolbar', github: 'firstdraft/dev_toolbar'
   gem 'draft_generators', github: 'firstdraft/draft_generators'
   gem 'letter_opener'
   gem 'meta_request'
   gem 'console_ip_whitelist', github: 'firstdraft/console_ip_whitelist'
+  gem 'web_git', github: 'firstdraft/web_git'
+end
+
+group :production do
+  gem "pg"
+  gem "rails_12factor"
 end
 
 group :test do
